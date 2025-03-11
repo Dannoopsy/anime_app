@@ -1,0 +1,9 @@
+<h1>Добавить отзыв для {{ anime.title }}</h1>
+<form method="post">
+    {% csrf_token %}
+    <label>Оценка (1-10):</label>
+    <input type="number" name="rating" min="1" max="10" required><br>
+    <label>Отзыв:</label>
+    <textarea name="text" required></textarea><br>
+    <button type="submit">Добавить</button>
+</form>

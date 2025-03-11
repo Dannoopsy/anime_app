@@ -1,0 +1,16 @@
+<h1>{{ anime.title }}</h1>
+
+{% if anime.posters %}
+    <img src="{{ anime.posters.url }}" alt="Постер" width="200">
+{% else %}
+    <p>Нет постера</p>
+{% endif %}
+
+<p>{{ anime.description }}</p>
+
+<h2>Отзывы:</h2>
+<ul>
+    {% for review in reviews %}
+        <li>{{ review.user.username }}: {{ review.rating }}/10 - "{{ review.text }}"</li>
+    {% endfor %}
+</ul>

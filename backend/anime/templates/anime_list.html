@@ -1,0 +1,13 @@
+<h1>Список аниме</h1>
+<ul>
+    {% for anime in animes %}
+        <li>
+            <a href="{% url 'anime_detail' anime.id %}">
+                {% if anime.posters %}
+                    <img src="{{ anime.posters.url }}" alt="Постер" width="100">
+                {% endif %}
+                {{ anime.title }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>

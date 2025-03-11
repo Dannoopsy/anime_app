@@ -1,0 +1,8 @@
+<img src="{{ user.profile.avatar.url }}" alt="Аватарка" width="100">
+<h1>Отзывы пользователя {{ user.username }}</h1>
+<ul>
+    {% for review in reviews %}
+        <li><a href="{% url 'anime_detail' review.anime.id %}">{{ review.anime.title }}</a>: 
+            {{ review.rating }}/10 - "{{ review.text }}"</li>
+    {% endfor %}
+</ul>
