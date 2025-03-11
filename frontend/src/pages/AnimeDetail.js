@@ -5,6 +5,7 @@ import AnimeHistogram from "../components/AnimeHistogram";
 import ReviewList from "../components/ReviewList";
 import ReviewForm from "../components/ReviewForm";
 import api from "../api/api";
+import { BASE_URL } from '../config.js';
 
 const AnimeDetail = () => {
     const { id } = useParams();
@@ -55,7 +56,7 @@ const AnimeDetail = () => {
             <div style={styles.mainContent}>
                 
                 <div style={styles.leftColumn}>
-                    <img src={`http://127.0.0.1:8000${anime.posters}`} alt={anime.title} style={styles.poster} />
+                    <img src={`${BASE_URL}${anime.posters}`} alt={anime.title} style={styles.poster} />
                 </div>
 
                 

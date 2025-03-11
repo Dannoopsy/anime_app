@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BASE_URL } from '../config.js';
 
 const AnimeCard = ({ anime }) => {
     return (
         <Link to={`/anime/${anime.id}`} style={styles.link}>
             <div style={styles.card}>
                 <div style={styles.imageContainer}>
-                    <img src={`http://127.0.0.1:8000${anime.posters}`} alt={anime.title} style={styles.image} />
+                    <img src={`${BASE_URL}${anime.posters}`} alt={anime.title} style={styles.image} />
                 </div>
                 <p style={styles.title}>{anime.title}</p>
             </div>

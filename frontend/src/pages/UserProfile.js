@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
-
 import AuthContext from "../context/AuthContext";
 import AnimeHistogram from "../components/AnimeHistogram";
 import api from "../api/api";
+import { BASE_URL } from '../config.js';
 const UserProfile = () => {
     const { username } = useParams();
     const navigate = useNavigate();
@@ -103,7 +103,7 @@ const UserProfile = () => {
             </div>
                 <div style={styles.mainContent}>
                     <div style={styles.leftColumn}>
-                        <img src={`http://127.0.0.1:8000${profile.profile?.avatar}`} alt="Аватар" style={styles.avatar} />
+                        <img src={`${BASE_URL}${profile.profile?.avatar}`} alt="Аватар" style={styles.avatar} />
                         {user?.username === username && (
                             <button onClick={handleEditClick} style={styles.editButton}>Редактировать</button>
                         )}
@@ -130,7 +130,7 @@ const UserProfile = () => {
                             {profile.rated_anime.map(anime => (
                                 <div key={anime.id} style={styles.animeItem}>
                                     <img 
-                                        src={`http://127.0.0.1:8000${anime.posters}`} 
+                                        src={`${BASE_URL}${anime.posters}`} 
                                         alt={anime.title} 
                                         style={styles.animePoster} 
                                         onClick={() => navigate(`/anime/${anime.id}`)}

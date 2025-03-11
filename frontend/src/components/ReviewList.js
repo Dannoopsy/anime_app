@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { BASE_URL } from '../config.js';
 const ReviewList = ({ reviews }) => {
     const [avatars, setAvatars] = useState({});
     const navigate = useNavigate();
@@ -11,9 +11,9 @@ const ReviewList = ({ reviews }) => {
             for (const review of reviews) {
                 if (!avatars[review.user]) {
                     try {
-                        const response = await fetch(`http://127.0.0.1:8000/api/users/${review.user}/`);
+                        const response = await fetch(`${BASE_URL}/api/users/${review.user}/`);
                         const userData = await response.json();
-                        avatarData[review.user] = userData.profile?.avatar ? `http://127.0.0.1:8000${userData.profile.avatar}` : "/default-avatar.png";
+                        avatarData[review.user] = userData.profile?.avatar ? `${BASE_URL}${userData.profile.avatar}` : "/default-avatar.png";
                     } catch (error) {
                         console.error("Ошибка загрузки аватара:", error);
                         avatarData[review.user] = "/default-avatar.png";
