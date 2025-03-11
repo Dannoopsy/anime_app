@@ -16,6 +16,30 @@ const AnimeList = () => {
     
     return (
         <div>
+            {/* 🔹 Тёмная полоска сверху */}
+            <div style={styles.header}>
+                <h2>Список аниме</h2>
+                <div style={styles.userBox}>
+                    {user ? (
+                        <>
+                            <Link to={`/users/${user.username}`} style={styles.username}>
+                                {user.username}
+                            </Link>
+                            <button onClick={logout} style={styles.logoutButton}>
+                                Выйти
+                            </button>
+                        </>
+                    ) : (
+                        <div style={styles.authButtons}>
+                            <Link to="/login" style={styles.loginButton}>Войти</Link>
+                            <Link to="/register" style={styles.registerButton}>Регистрация</Link>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {/* 🔹 Контейнер с аниме */}
+            <div style={styles.container}>
                 {animes.map((anime) => (
                     <AnimeCard key={anime.id} anime={anime} />
                 ))}
